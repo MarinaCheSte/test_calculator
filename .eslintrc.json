@@ -1,16 +1,19 @@
 {
+  "root": true,
   "env": {
-    "browser": true,
-    "commonjs": true,
-    "es2021": true
+      "browser": true,
+      "es2021": true,
+      "node": true
   },
-  "extends": ["airbnb-base", "prettier"],
-  "overrides": [],
+  "extends": [
+      "eslint:recommended"
+  ],
   "parserOptions": {
-    "ecmaVersion": "latest"
+      "ecmaVersion": "latest",
+      "sourceType": "module"
   },
+  "plugins": ["prettier"],
   "rules": {
-//"no-console": "off"
-  },
-  "plugins": ["prettier"]
+      "prettier/prettier": "error"
+  }
 }
