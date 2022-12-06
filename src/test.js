@@ -45,7 +45,7 @@ function toggleTheme() {
 
 document.querySelector('.mode-button').onclick = toggleTheme
 
-// CALCULATOR FUNCTIONS
+// CALCULATOR
 
 let firstNumber = ''
 let secondNumber = ''
@@ -94,11 +94,14 @@ for (let buttonline of buttonsArea) {
                     firstNumber = '0' + firstNumber
                     console.log(firstNumber)
                 }
-                screen.textContent = +firstNumber.slice(0, 12)
+                screen.textContent = +firstNumber.toString().slice(0, 12)
             } else if (firstNumber !== '' && secondNumber !== '' && result) {
                 if (key == '.') {
                     if (secondNumber.toString().indexOf('.') < 0)
                         secondNumber += '.'
+                    if (result) {
+                        clear()
+                    }
                 } else {
                     secondNumber = key
                 }
@@ -121,7 +124,7 @@ for (let buttonline of buttonsArea) {
                     secondNumber = '0' + secondNumber
                     console.log(secondNumber)
                 }
-                screen.textContent = +secondNumber.slice(0, 12)
+                screen.textContent = +secondNumber.toString().slice(0, 12)
             }
         }
 
@@ -134,7 +137,7 @@ for (let buttonline of buttonsArea) {
         if (key === '%') {
             firstNumber = (Number(firstNumber) / 100) * Number(secondNumber)
             result = true
-            screen.textContent = firstNumber
+            screen.textContent = +firstNumber.toString().slice(0, 12)
         }
 
         if (key === '+/-') {
@@ -155,7 +158,7 @@ for (let buttonline of buttonsArea) {
                 firstNumber = firstNumber * -1
                 console.log('first' + firstNumber)
                 result = true
-                screen.textContent = firstNumber.toString().slice(0, 12)
+                screen.textContent = +firstNumber.toString().slice(0, 12)
             }
         }
 
@@ -190,3 +193,5 @@ for (let buttonline of buttonsArea) {
         }
     })
 }
+
+import './calculator.css'

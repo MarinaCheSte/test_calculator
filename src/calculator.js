@@ -92,7 +92,6 @@ for (let buttonline of buttonsArea) {
 
                 if (firstNumber.toString().startsWith('.')) {
                     firstNumber = '0' + firstNumber
-                    console.log(firstNumber)
                 }
                 screen.textContent = +firstNumber.toString().slice(0, 12)
             } else if (firstNumber !== '' && secondNumber !== '' && result) {
@@ -108,7 +107,6 @@ for (let buttonline of buttonsArea) {
 
                 if (secondNumber.toString().startsWith('.')) {
                     secondNumber = '0' + secondNumber
-                    console.log(secondNumber)
                 }
 
                 result = false
@@ -122,7 +120,6 @@ for (let buttonline of buttonsArea) {
                 }
                 if (secondNumber.toString().startsWith('.')) {
                     secondNumber = '0' + secondNumber
-                    console.log(secondNumber)
                 }
                 screen.textContent = +secondNumber.toString().slice(0, 12)
             }
@@ -143,20 +140,15 @@ for (let buttonline of buttonsArea) {
         if (key === '+/-') {
             if (firstNumber !== '' && secondNumber == '') {
                 firstNumber = firstNumber * -1
-                console.log('first' + firstNumber)
-
                 screen.textContent = firstNumber.toString().slice(0, 12)
             }
 
             if (secondNumber !== '' && firstNumber !== '') {
                 secondNumber = secondNumber * -1
-                console.log('second' + secondNumber)
-                console.log('first' + firstNumber)
                 screen.textContent = secondNumber.toString().slice(0, 12)
             }
             if (secondNumber !== '' && firstNumber !== '' && result) {
                 firstNumber = firstNumber * -1
-                console.log('first' + firstNumber)
                 result = true
                 screen.textContent = +firstNumber.toString().slice(0, 12)
             }
@@ -168,13 +160,13 @@ for (let buttonline of buttonsArea) {
             }
             switch (action) {
                 case '+':
-                    firstNumber = +firstNumber + +secondNumber
+                    firstNumber = Number(firstNumber) + Number(secondNumber)
                     break
                 case '-':
-                    firstNumber = +firstNumber - +secondNumber
+                    firstNumber = Number(firstNumber) - Number(secondNumber)
                     break
                 case 'x':
-                    firstNumber = +firstNumber * +secondNumber
+                    firstNumber = Number(firstNumber) * Number(secondNumber)
                     break
                 case '÷':
                     if (secondNumber === '0') {
@@ -184,12 +176,14 @@ for (let buttonline of buttonsArea) {
                         action = ''
                         return
                     }
-                    firstNumber = +firstNumber / +secondNumber
+                    firstNumber = Number(firstNumber) / Number(secondNumber)
                     break
             }
             result = true
             screen.textContent = +firstNumber.toString().slice(0, 12)
-            console.log('вывод на экран первого числа' + screen.textContent)
         }
     })
 }
+
+import './calculator.css'
+import './normalize.css'
