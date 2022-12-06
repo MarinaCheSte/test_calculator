@@ -1,7 +1,10 @@
 # test_calculator
 **Test Task:** [simple_calculator.pdf](https://github.com/MarinaCheSte/test_calculator/files/10168735/simple_calculator.pdf)
+---
 **Deployment**: https://marinacheste.github.io/test_calculator/
+---
 **How to run the app:**
+--
 `This app uses npm package manager, webpack and webpack-cli`
 `To view the app copy a github link to your local directory`
 `You need to have node.js installed`
