@@ -14,8 +14,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: "webpack Boilerplate",
-      template: path.resolve(__dirname, "./src/calculator.html"), // шаблон
-      filename: "index.html", // название выходного файла
+      template: path.resolve(__dirname, "./src/calculator.html"),
+      filename: "index.html",
     }),
     new CleanWebpackPlugin(),
   ],
@@ -28,17 +28,14 @@ module.exports = {
         exclude: /node_modules/,
         use: ["babel-loader"],
       },
-      // изображения
       {
         test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
         type: "asset/resource",
       },
-      // шрифты и SVG
       {
         test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
         type: "asset/inline",
       },
-      // CSS, PostCSS, Sass
       {
         test: /\.(css)$/,
         use: ["style-loader", "css-loader"],
@@ -49,7 +46,6 @@ module.exports = {
   mode: "development",
   devServer: {
     historyApiFallback: true,
-    contentBase: path.resolve(__dirname, "./dist"),
     open: true,
     compress: true,
     hot: true,

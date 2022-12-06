@@ -5,6 +5,7 @@ const wrapper = document.querySelector('.wrapper')
 const items = document.querySelectorAll('.calculator__item')
 const lightItems = document.querySelectorAll('.calculator__item_light')
 const coloredItems = document.querySelectorAll('.calculator__item_colored')
+const disabledBtns = document.querySelectorAll('.func')
 
 function toggleTheme() {
     if (!section.classList.contains('_section_light')) {
@@ -76,6 +77,9 @@ for (let buttonline of buttonsArea) {
     buttonline.addEventListener('click', function (event) {
         if (!event.target.classList.contains('calculator__item')) return
         if (event.target.classList.contains('clear')) {
+            for (let disabledBtn of disabledBtns) {
+                disabledBtn.classList.remove('_disabled')
+            }
             clear()
         }
         screen.textContent = '0'
@@ -128,6 +132,11 @@ for (let buttonline of buttonsArea) {
         if (actions.includes(key)) {
             action = key
             screen.textContent = action
+            for (let disabledBtn of disabledBtns) {
+                if (action !== '') {
+                    disabledBtn.classList.add('_disabled')
+                }
+            }
             return
         }
 
@@ -135,6 +144,9 @@ for (let buttonline of buttonsArea) {
             firstNumber = (Number(firstNumber) / 100) * Number(secondNumber)
             result = true
             screen.textContent = +firstNumber.toString().slice(0, 12)
+            for (let disabledBtn of disabledBtns) {
+                disabledBtn.classList.remove('_disabled')
+            }
         }
 
         if (key === '+/-') {
@@ -142,7 +154,6 @@ for (let buttonline of buttonsArea) {
                 firstNumber = firstNumber * -1
                 screen.textContent = firstNumber.toString().slice(0, 12)
             }
-
             if (secondNumber !== '' && firstNumber !== '') {
                 secondNumber = secondNumber * -1
                 screen.textContent = secondNumber.toString().slice(0, 12)
@@ -155,10 +166,16 @@ for (let buttonline of buttonsArea) {
         }
 
         if (key === '=') {
+            for (let disabledBtn of disabledBtns) {
+                disabledBtn.classList.remove('_disabled')
+            }
             if (secondNumber === '') {
                 secondNumber = firstNumber
             }
             switch (action) {
+                case '':
+                    firstNumber = Number(firstNumber)
+                    break
                 case '+':
                     firstNumber = Number(firstNumber) + Number(secondNumber)
                     break

@@ -97,7 +97,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	cursor: pointer;
-	background-color: #8c6607;
+	background-color: #a77a09;
 	justify-self: center;
 	color: rgb(6, 6, 6);
 	font-size: 40px;
@@ -144,7 +144,7 @@ body {
 }
 
 .calculator__item_colored {
-	background-color: #910f20;
+	background-color: #c4182f;
 	color: #080808;
 }
 
@@ -165,4 +165,9 @@ body {
 	display: grid;
 	height: 80px;
 	grid-template-columns: 2fr 1fr 1fr;
+}
+
+._disabled {
+	pointer-events: none;
+	opacity: 0.5
 }
